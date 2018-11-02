@@ -1,0 +1,64 @@
+git add filename 添加文件到暂存区
+git add . 工作区所有修改添加到暂存区
+
+git commit -m 'message' 提交暂存区内容到当前分支
+
+git diff filename 查看文件的变动
+git diff HEAD -- filename 查看工作区和版本库里面最新版本的区别
+
+git log --pretty=oneline 查看当前分支提交记录
+git log -1 查看最后一次提交的信息
+git log --graph --pretty=oneline --abbrev-commit 图形化显示git分支信息
+git reflog 查看执行过的所有命令
+
+git checkout -- filename 丢弃工作区的修改
+git rm —cached filename (之前没有过提交)把暂存区的文件放回工作区
+git reset HEAD filename (之前有过提交)把暂存区的文件放回工作区
+git reset --hard commit_id 版本回退到commit_id
+
+git rm filename 删除文件
+git rm -r file 删除文件夹
+
+ssh-keygen -t rsa -C "email@example.com"  创建SSH Key
+
+git remote add origin git@github.com:git仓库  本地仓库和远程仓库关联
+git remote remove origin 取消本地仓库和远程仓库的关联
+git push -u origin master 本地和远程仓库关联之后，第一次推送master的时候加-u，让本地的master分支和远程的master分支关联起来
+git push origin barnch_name 推送本地commit到远程分支
+
+git branch branch_name 创建分支
+git checkout branch_name 检出分支
+git checkout -b branch_name 创建并检出分支
+git branch 查看当前分支
+git branch -a 查看所有分支（本地和远程）
+git branch -d branch_name 删除本地分支 -D强制删除
+git push origin —-delete branch_name 删除远程分支
+git checkout -b branch_name origin/branch_name 创建远程的branch_name分支到本地
+git branch --set-upstream branch_name origin/branch_name 设置本地分支和远程分支相关联,远程分支必须存在(执行有问题，可使用git push -u origin branch_name进行关联)
+git merge branch_name 合并分支到当前分支
+git merge --no-ff branch_name 合并分支到当前分支，--no-ff表示禁用fast forward
+
+git stash 把当前的修改储存起来，这样可以不提交修改的内容就能切换分支
+git stash list 查看stash列表
+git stash pop 把储存的内容取出来，并把stash的内容删了
+git stash apply 恢复内容，但是stash内容并不删除，需要使用git stash drop来删除
+git stash apply stash@{0} 恢复指定的stash
+
+git remote 查看远程仓库信息 -v显示更详细的信息
+
+git tag tag_name 给当前分支的最新提交打一个tag_name标签
+git tag tag_name commit_id 给commit_id打一个标签
+git tag 查看所有的标签,标签不是按时间顺序列出，而是按字母顺序列出
+git show <tag_name> 查看标签信息
+git tag -a tag_name -m ‘message’ 创建带说明的标签 -a指定标签名 -m指定说明文字
+git tag -d tag_name 删除指定标签
+git push origin tag_name 把指定标签推到远程
+git push origin —-tags 一次性推送全部尚未推送到远程的本地标签
+git push origin :refs/tags/tag_name 删除远程标签
+
+git config —-global user.name 设置用户名
+git config —-global user.email 设置邮箱
+git config —-global color.ui true 让git显示颜色
+
+git config —-global alias.别名 命令名称 给命令起别名
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
